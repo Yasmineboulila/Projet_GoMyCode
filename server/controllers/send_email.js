@@ -7,8 +7,8 @@ const transporter = nodemailer.createTransport({
     secure: false,
     auth: {
       // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-      user: "boulila.yb@gmail.com",
-      pass: "isdrxjouyigagsja",
+      user: "boulila.yas2002@gmail.com",
+      pass: "ahfliwynyjbivqij",
     },
   });
   transporter.verify((error,success)=>{
@@ -22,11 +22,11 @@ const transporter = nodemailer.createTransport({
   const sendmail =(async(req,res)=>{
     try {
        await transporter.sendMail({
-            from:req.body.email,
-            to:"boulila.yb@gmail.com",
+            from:"yasmine@gmail.com",
+            to:"boulila.yas2002@gmail.com",
             subject:req.body.subject,
             text:req.body.text,
-            html:`<h1>Hello ${req.body.email}</h1>`
+            html:`<h1>Hello </h1>`
           })
           res.status(200).send("mail sent")
     } catch (error) {

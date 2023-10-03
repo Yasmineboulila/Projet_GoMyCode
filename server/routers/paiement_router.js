@@ -3,4 +3,4 @@ const router=require("express").Router()
 
 router.post("/api/paiement",paiement.paiemente)
 
-module.exports={paiment_router:router}
+module.exports={paiement_router:router}

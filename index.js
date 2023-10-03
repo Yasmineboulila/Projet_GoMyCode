@@ -1,6 +1,6 @@
 const express=require("express")
 const cors=require("cors")
-const port=5678
+const port=5679
 
 const {post_router}=require('./server/routers/post_router')
 const bodyParser = require('body-parser')
