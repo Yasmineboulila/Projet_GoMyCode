@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import FormLoging from './formLoging';
 import {MdPets ,MdAccountCircle} from "react-icons/md";
+import {SlBasket} from "react-icons/sl"
 
  function Navbars() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -16,7 +17,7 @@ import {MdPets ,MdAccountCircle} from "react-icons/md";
     <Navbar expand="lg" className="bg-body-tertiary">
     <Container fluid>
      <Navbar.Brand href="#home">
-     <MdPets size="1.8rem"/>{' '}
+     <MdPets size="1.4rem"/>{' '}
           Pets Home
         </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
@@ -50,13 +51,7 @@ import {MdPets ,MdAccountCircle} from "react-icons/md";
           {isFormOpen && <FormLoging/>}
           </div>
           <div>
-             <img
-            alt=""
-            src="/img/logo.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
+          <SlBasket size="1.8rem"/>
           </div>
         
       </Navbar.Collapse>
