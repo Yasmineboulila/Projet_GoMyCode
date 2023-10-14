@@ -4,9 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import FormLoging from './formLoging';
 import {MdPets ,MdAccountCircle} from "react-icons/md";
 import {SlBasket} from "react-icons/sl"
+import Example from './Form';
 
  function Navbars() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -14,7 +14,8 @@ import {SlBasket} from "react-icons/sl"
   const handleImageClick = () => {
     setIsFormOpen(!isFormOpen)}
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <>
+    <Navbar expand="lg" className="bg-body-tertiary" style={{position:"sticky",top: 0}}>
     <Container fluid>
      <Navbar.Brand href="#home">
      <MdPets size="1.4rem"/>{' '}
@@ -27,13 +28,13 @@ import {SlBasket} from "react-icons/sl"
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav.Link href="#home">HOME</Nav.Link>
+          <Nav.Link href="/">HOME</Nav.Link>
           <Nav.Link href="#about">ABOUT</Nav.Link>
           <NavDropdown title="SHOP BY PET" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="#dog">DOG</NavDropdown.Item>
-            <NavDropdown.Item href="#cat">CAT</NavDropdown.Item>
-            <NavDropdown.Item href="#fish">FISH</NavDropdown.Item>
-            <NavDropdown.Item href="#bird">BIRD</NavDropdown.Item>
+            <NavDropdown.Item href="#dogs">DOG</NavDropdown.Item>
+            <NavDropdown.Item href="#cats">CAT</NavDropdown.Item>
+            <NavDropdown.Item href="#fishs">FISH</NavDropdown.Item>
+            <NavDropdown.Item href="#birds">BIRD</NavDropdown.Item>
             <NavDropdown.Item href="#others">OTHERS</NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -48,15 +49,17 @@ import {SlBasket} from "react-icons/sl"
         </Form>
         <div>
         <MdAccountCircle size="1.8rem" onClick={handleImageClick}/>
-          {isFormOpen && <FormLoging/>}
+          
           </div>
           <div>
-          <SlBasket size="1.8rem"/>
+          <SlBasket size="1.8rem" href='/ShoppingCart'/>
           </div>
         
       </Navbar.Collapse>
     </Container>
   </Navbar>
+  {isFormOpen && <Example/>}
+  </>
   )
 }
 export default Navbars
