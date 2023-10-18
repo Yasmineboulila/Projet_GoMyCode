@@ -1,12 +1,274 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose");
 
-const connecting=async()=>{
-    try {
-        mongoose.connect("mongodb+srv://boulilayas2002:NJC1Dvg1zgnjTImg@cluster0.1qck6et.mongodb.net/?retryWrites=true&w=majority")
-        console.log("db connected")
-    } catch (error) {
-        console.log(error)
-    }
-   
-}
-module.exports=connecting
+const connecting = async () => {
+  try {
+     mongoose.connect("mongodb+srv://boulilayas2002:boulilayas2002@testclustor.cmf3clz.mongodb.net/?retryWrites=true&w=majority")
+    // mongoose.connect(
+    //   "mongodb+srv://boulilayas2002:NJC1Dvg1zgnjTImg@cluster0.1qck6et.mongodb.net/test?retryWrites=true&w=majority"
+    // );
+    // mongoose.connect("mongodb://localhost/test", {family: 4})
+    console.log("db connected");
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports = connecting;
+
+const data = [
+  {
+    title: "MIGLIOR GATTO ADULT CAT SALMON 2 KG",
+    image:"https://all-for-pets.tn/site/images/CHATS/Alimentation/Croquettes/mora…",
+    description:"Croquettes for adult cats with Salmon. Balanced mineral formula",
+    prix: 28,
+    category: "food",
+    pet: "cat",
+  },
+  {
+    title: "GOURMET GOLD MOUSSELINE BEEF 85GR",
+    image:"https://www.petsonic.fr/18882/nourriture-boite-pour-chats-gourmet-gold-mousse-boeuf-85-gr.jpg",
+    description:"the Gold Range of wet cat food, a tasty beef recipe with a fresh and exquisite texture. This box is made up of small portions of beef",
+    prix: 4.8,
+    category: "food",
+    pet: "cat",
+  },
+  {
+    title: "POCHON FELIX SHARED TUNA 85GR",
+    image:"https://animalzone.tn/2462-medium_default/felix-tendre-effilees-au-thon-85g.webp",
+    description: "",
+    prix: 3.5,
+    category: "food",
+    pet: "cat",
+  },
+  {
+    title: "KIPPY TUNA PATE 400 G",
+    image: "https://mypets.tn/4234/kippy-chat-thon-400-gr.jpg",
+    description: "",
+    prix: 6,
+    category: "food",
+    pet: "cat",
+  },
+  {
+    title: "SELF-CLEANING CAT BRUSH WITH BUTTON - BLUE",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/94/1275/1.jpg?8009",
+    description: "",
+    prix: 28.5,
+    category: "supplies",
+    pet: "cat",
+  },
+  {
+    title: "CROCI GRIFFIER-CAT-KITEN-27*37*35CM-CROSI",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/55/2996/1.jpg?6965",
+    description: "",
+    prix: 81,
+    category: "supplies",
+    pet: "cat",
+  },
+  {
+    title: "COLLAR WITH BELL FOR CATS - 30 CM PINK",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/60/2647/1.jpg?4727",
+    description: "",
+    prix: 8,
+    category: "supplies",
+    pet: "cat",
+  },
+  {
+    title: "KOKOLA FUSHIA PINK BASKET 64*38CM - CAT",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/87/5777/1.jpg?9505",
+    description: "",
+    prix: 98.75,
+    category: "supplies",
+    pet: "cat",
+  },
+  {
+    title: "ROYAL CANIN DOG MAXI PUPPY 15KG",
+    image:"https://petstore.tn/wp-content/uploads/2021/03/ylguwerenxh2bg6uuoyi-2.jpg",
+    description:"Kibble for dogs Up to 15 months Complete food for puppies of large breeds (adult weight 26 to 44 kg)",
+    prix: 355,
+    category: "food",
+    pet: "dog",
+  },
+  {
+    title: "BRIT PREMIUM BEEF AND TRIPES 800G",
+    image:"https://animalzone.tn/3330-home_default/brit-premium-by-nature-boeuf-pour-chien-800-gr.webp",
+    description:"Ideal complement to kibble. Complete food, snack or tasty supplement to kibble for young dogs of all breeds.",
+    prix: 14,
+    category: "food",
+    pet: "dog",
+  },
+  {
+    title: "DC SNACK BREAST FILLET 80GR",
+    image:"https://www.zanimax.tn/cdn/shop/products/dr-clauders-snack-filet-de-canard-80gr.jpg?v=1646847633",
+    description:"Duck fillets are a lightly cooked treat. These duck fillets are premium, delicate and healthy pieces that your dog will be sure to love.",
+    prix: 18.6,
+    category: "food",
+    pet: "dog",
+  },
+  {
+    title: "KIPPY PATE DOG FISH- RICE- CARROTS 800G",
+    image:"https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/92/6796/1.jpg?5878",
+    description: ".",
+    prix: 13.5,
+    category: "food",
+    pet: "dog",
+  },
+  {
+    title: "FELICAN PACK-OF-2:WALKING-TOY-DOG-TENNIS-BALL",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/69/0017/1.jpg?7167",
+    description: "",
+    prix: 25,
+    category: "supplies",
+    pet: "dog",
+  },
+  {
+    title: "FELICE PLASTIC HOUSE 78*57*46CM GREEN - DOGS",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/57/4677/1.jpg?2171",
+    description: "",
+    prix: 337.5,
+    category: "supplies",
+    pet: "dog",
+  },
+  {
+    title: "FELICAN WATER AND FOOD DISPENSER 3.5L",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/93/1036/1.jpg?8227",
+    description: "",
+    prix: 30,
+    category: "supplies",
+    pet: "dog",
+  },
+  {
+    title: "GREEN GROOMING GLOVES - FOR DOG",
+    image:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/78/5247/1.jpg?4559",
+    description: "",
+    prix: 26,
+    category: "supplies",
+    pet: "dog",
+  },
+  {
+    title: "MANITOBA - CARDUELIDI 800G",
+    image: "https://www.zanimax.tn/cdn/shop/products/26010_2.jpg?v=1646847978",
+    description: "",
+    prix: 24.5,
+    category: "food",
+    pet: "bird",
+  },
+  {
+    title: "MANITOBA - ALL PARROTS 2 KG",
+    image:"https://avianworlddublin.ie/wp-content/uploads/2021/11/manitoba-tropical-big-parrots-2kg.jpg",
+    description:"Manitoba All Parrots is a seed blend for all medium and large parrots. Composition: striped sunflower, kardy, peas, buckwheat, crushed corn, white sorghum, peeled oats, white corn...",
+    prix: 37.5,
+    category: "food",
+    pet: "bird",
+  },
+  {
+    title: "MANITOBA PATE GOLD 400 GR",
+    image:"https://www.ktiniatrikoskosmos.gr/wp-content/uploads/2022/05/MANITOBA-PATE-GOLD-400gr-KTINIATRIKOSKOSMOS.GR_.jpg",
+    description: "",
+    prix: 7.5,
+    category: "food",
+    pet: "bird",
+  },
+  {
+    title: "MANITOBA -INSEPARABLES & COCKATILITIES - 1 KG",
+    image:"https://www.zanimax.tn/cdn/shop/files/manitoba-inseparables-calopsittes-1kg.png?v=1683237312",
+    description:"Mixture of seeds for lovebirds & cockatiels COMPOSITION: Yellow millet, Canary seed, Peeled oats, White sorghum, Red millet, Buckwheat. Paddy Rice. Wheat, Striped Sunflower, Iregi, Kardy...",
+    prix: 11,
+    category: "food",
+    pet: "bird",
+  },
+  {
+    title: "BIRD LADDER TOY 6 STEPS",
+    image: "https://www.zanimax.tn/cdn/shop/files/NNN.png?v=1693767372",
+    description:"For the well-being and health of your feathered companion, the ladder is a toy suitable for long hours of exercise and fun.",
+    prix: 10,
+    category: "supplies",
+    pet: "bird",
+  },
+  {
+    title: "FERPLAST REGINA BIRD CAGE 32.5 X 49 CM",
+    image:"https://www.zanimax.tn/cdn/shop/products/cage-a-oiseaux-ferplast-regina-325-x-49-cm.jpg?v=1646847420",
+    description:"Ferplast cage for canaries and small exotic birds: - Antique finish - Size: 32.5 x 49 cm",
+    prix: 139,
+    category: "supplies",
+    pet: "bird",
+  },
+  {
+    title: "PLASTIC BIRD DRINK",
+    image:"https://www.zanimax.tn/cdn/shop/products/fontaine-110cc.jpg?v=1642155360",
+    description: "",
+    prix: 3,
+    category: "supplies",
+    pet: "bird",
+  },
+  {
+    title: "TONIPLUS - BIRD PEST 100 ML",
+    image:"https://www.zanimax.tn/cdn/shop/files/2_1_313392d1-4430-4cb8-be1e-bf13f596375a.jpg?v=1684096830",
+    description: "",
+    prix: 10,
+    category: "supplies",
+    pet: "bird",
+  },
+  {
+    title: "TETRA DELICA KRILL 100ML",
+    image: "https://petstore.tn/wp-content/uploads/2022/03/1.png",
+    description: "",
+    prix: 25,
+    category: "food",
+    pet: "fish",
+  },
+  {
+    title: "TETRA DELICA BLOODWORMS 100ML",
+    image: "https://petstore.tn/wp-content/uploads/2022/03/2.png",
+    description: "",
+    prix: 25,
+    category: "food",
+    pet: "fish",
+  },
+  {
+    title: "TETRA MIN FLAXES 12 GR",
+    image: "https://petstore.tn/wp-content/uploads/2022/03/4.png",
+    description: "",
+    prix: 4,
+    category: "food",
+    pet: "fish",
+  },
+  {
+    title: "TETRA MIN GOLDFISH 12 GR",
+    image:"https://all-for-pets.tn/site/images/POISSONS/Aquarium/Alimentations_Poissons/alime-03.png",
+    description: "",
+    prix: 4,
+    category: "food",
+    pet: "fish",
+  },
+  {
+    title: "TETRA COMPLETE_SUBSTRATE 5 KG",
+    image:"https://all-for-pets.tn/site/images/POISSONS/Aquarium/Traitement_d_eau_et_entretien/aqua-safe-08.png",
+    description:"Fertilizing substrate with long-lasting effect rich in nutrients Healthy and luxuriant growth of plants.",
+    prix: 75,
+    category: "supplies",
+    pet: "fish",
+  },
+  {
+    title: "TETRA WATER_TEST COMPLETE WATER ANALYSIS TEST KIT",
+    image:"https://all-for-pets.tn/site/images/POISSONS/Aquarium/Traitement_d_eau_et_entretien/test-01.png",
+    description:"Complete water analysis test kit to precisely determine the 5 main water parameters. Measures the main parameters: pH, total hardness (GH), carbonate hardness (KH), nitrites (NO2) and carbon dioxide (CO2)",
+    prix: 120,
+    category: "supplies",
+    pet: "fish",
+  },
+  {
+    title: "TETRA REPTO_AQUA_SET",
+    image:"https://all-for-pets.tn/site/images/POISSONS/Terrarium/Aquaterrarium-Decoration/TL30074_9651.png-Personnalis.png",
+    description: "",
+    prix: 450,
+    category: "supplies",
+    pet: "fish",
+  },
+  {
+    title: "AIR DIFFUSER BUBBLE STONE",
+    image:"https://petstore.tn/wp-content/uploads/2022/03/Capture-decran-2022-03-10-105040.jpg",
+    description: "",
+    prix: 3,
+    category: "supplies",
+    pet: "fish",
+  },
+];

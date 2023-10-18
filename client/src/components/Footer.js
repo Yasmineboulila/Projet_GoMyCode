@@ -18,54 +18,47 @@ export default function Footer() {
             </p>
           </div>
           <div className="col-xs-6 col-md-3">
-            <h6>Categories</h6>
+            <h6>Shop by pets</h6>
             <ul className="footer-links">
               <li>
-                <a href="http://scanfcode.com/category/c-language/">C</a>
+                <a href="/cat">Cat</a>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/front-end-development/">
-                  UI Design
+                <a href="/dog">
+                  Dog
                 </a>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/back-end-development/">
-                  PHP
+                <a href="/bird">
+                  Bird
                 </a>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/java-programming-language/">
-                  Java
+                <a href="/fish">
+                 Fish
                 </a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/category/android/">Android</a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/category/templates/">Templates</a>
               </li>
             </ul>
           </div>
           <div className="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul className="footer-links">
+            <li>
+                <a href="/">Home</a>
+              </li>
+              
               <li>
-                <a href="http://scanfcode.com/about/">About Us</a>
+                <a href="/about">About Us</a>
               </li>
               <li>
-                <a href="http://scanfcode.com/contact/">Contact Us</a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/contribute-at-scanfcode/">
-                  Contribute
+                <a style={{textDecoration:"underline"}}>Contact Us:
                 </a>
               </li>
               <li>
-                <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
+             - Phone number:+216 92 645 362<br/>
+              - Adress: Ben Arous, Mourouj6 
               </li>
-              <li>
-                <a href="http://scanfcode.com/sitemap/">Sitemap</a>
-              </li>
+             
             </ul>
           </div>
         </div>
@@ -81,18 +74,18 @@ export default function Footer() {
           <div className="col-md-4 col-sm-6 col-xs-12">
             <ul className="social-icons">
               <li>
-                <a className="facebook" href="#">
+                <a className="facebook" href="https://www.facebook.com/yasmina.boulila/">
                 <SlSocialFacebook />
                 </a>
               </li>
              
               <li>
-                <a className="dribbble" href="#">
+                <a className="dribbble" href="https://www.instagram.com/boulila_yasmine/">
                   <SlSocialInstagram/>
                 </a>
               </li>
               <li>
-                <a className="linkedin" href="#">
+                <a className="linkedin" href="https://twitter.com/YasmineB2002">
                 <SlSocialTwitter/>
                 </a>
               </li>

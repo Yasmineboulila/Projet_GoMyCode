@@ -8,7 +8,7 @@ import {MdPets ,MdAccountCircle} from "react-icons/md";
 import {SlBasket} from "react-icons/sl"
 import Example from './Form';
 
- function Navbars() {
+ function Navbars({handleChange}) {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleImageClick = () => {
@@ -17,7 +17,7 @@ import Example from './Form';
     <>
     <Navbar expand="lg" className="bg-body-tertiary" style={{position:"sticky",top: 0}}>
     <Container fluid>
-     <Navbar.Brand href="#home">
+     <Navbar.Brand href="/">
      <MdPets size="1.4rem"/>{' '}
           Pets Home
         </Navbar.Brand>
@@ -29,13 +29,14 @@ import Example from './Form';
           navbarScroll
         >
           <Nav.Link href="/">HOME</Nav.Link>
-          <Nav.Link href="#about">ABOUT</Nav.Link>
+          <Nav.Link href="/about">ABOUT</Nav.Link>
           <NavDropdown title="SHOP BY PET" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="#dogs">DOG</NavDropdown.Item>
-            <NavDropdown.Item href="#cats">CAT</NavDropdown.Item>
-            <NavDropdown.Item href="#fishs">FISH</NavDropdown.Item>
-            <NavDropdown.Item href="#birds">BIRD</NavDropdown.Item>
-            <NavDropdown.Item href="#others">OTHERS</NavDropdown.Item>
+           
+            <NavDropdown.Item href="/cat">CAT</NavDropdown.Item>
+            <NavDropdown.Item href="/dog">DOG</NavDropdown.Item>
+            <NavDropdown.Item href="/bird">BIRD</NavDropdown.Item>
+            <NavDropdown.Item href="/fish">FISH</NavDropdown.Item>
+           
           </NavDropdown>
         </Nav>
         <Form className="d-flex">
@@ -44,6 +45,7 @@ import Example from './Form';
             placeholder="Search everything about pets"
             className="me-2"
             aria-label="Search"
+            onChange = {(event)=>handleChange(event)}
             style={{width:"300px"}}
           />
         </Form>
@@ -52,7 +54,7 @@ import Example from './Form';
           
           </div>
           <div>
-          <SlBasket size="1.8rem" href='/ShoppingCart'/>
+          <SlBasket size="1.8rem" href='/shoppingCart'/>
           </div>
         
       </Navbar.Collapse>

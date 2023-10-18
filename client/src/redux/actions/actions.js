@@ -1,10 +1,12 @@
 import axios from "axios";
 import Swal from 'sweetalert2';
-import { GET_PRODUCT } from "../actions/actionsType";
+import { GET_PRODUCT,LOG_IN,REGISTER ,GET_CURRENT, FAIL} from "../actions/actionsType";
 export const get_product=()=>async(dispatch)=>{
     try {
-        await axios.get(`http://localhost:5679/api/getPost`).then((res)=>
-         dispatch({type:GET_PRODUCT,payload:res.data}))
+        await axios.get(`http://localhost:5679/api/getPost`).then((res)=>{
+         dispatch({type:GET_PRODUCT,payload:res.data.data})
+         console.log(res.data)
+        })
         
     } catch (error) {
         console.log(error)
@@ -63,3 +65,54 @@ export const delete_product = (id) => async (dispatch) => {
 
     }
 }
+// userActions
+export const login =(data,navigate)=>async(dispatch)=>{
+    try {
+        const res = await axios.post('http://localhost:5679/api/login',data)
+        dispatch({
+            type:LOG_IN,
+            payload:res.data
+        })
+        navigate("/")
+    } catch (error) {
+        console.log(error)
+        // error.response.data.errors.forEach((el) => {
+        //     dispatch(alert_error(el.msg));
+        //   });
+        //   dispatch({ type: FAIL, payload: error.response.data });
+        }
+    }
+
+
+export const register =(data,navigate)=>async(dispatch)=>{
+    try {
+        const res = await axios.post('http://localhost:5679/api/createUser',data)
+        dispatch({
+            type:REGISTER,
+            payload:res.data
+        })
+        navigate('/')
+    } catch (error) {
+        console.log(error)
+        // error.response.data.errors.forEach((el) => {
+        //     dispatch(alert_error(el.msg));
+        //   });
+        //   dispatch({ type: FAIL, payload: error.response.data });
+        }
+}
+export const getCurrent= ()=>async(dispatch)=>{
+    const config = {
+     headers: {
+         token: localStorage.getItem("token"),
+       },
+    }
+     try {
+         const res = await axios.get("http://localhost:5679/api/getCurrent",config)
+         dispatch({
+             type:GET_CURRENT,
+             payload:res.data
+         })
+     } catch (error) {
+         console.log(error)
+     }
+ }

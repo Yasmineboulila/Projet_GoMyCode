@@ -1,11 +1,9 @@
-import React from 'react'
-import ProductCard from './ProductCard'
+// import React from 'react'
+// import ProductCard from './productCard'
 
-export default function ProductList({data}) {
-  return (
-    <div style={{display:'flex', justifyContent:'space-around', flexWrap:'wrap', marginTop:'125px'}}>
-      {console.log(data,'list')}
-      {data.filter((product) => product.pet.includes(search)).map((product) => <ProductCard key={product._id} product={product} />)}
-    </div>
-  )
-}
+//  function ProductList({data,search}) {
+//   return (
+//    
+//   )
+// }
+// export default ProductList

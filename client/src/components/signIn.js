@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { login } from '../redux/actions/actions';
+import { useState  } from "react";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,15 +35,21 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
  function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+  const [Email, setEmail] = useState("");
+const [Password, setPassword] = useState("");
+const dispatch=useDispatch()
+const navigate=useNavigate()
+   const handleLogin=()=>{
+   dispatch(login({email:Email,password:Password},navigate))
+   };
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -58,7 +68,7 @@ const defaultTheme = createTheme();
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box   sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -68,6 +78,7 @@ const defaultTheme = createTheme();
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -78,6 +89,7 @@ const defaultTheme = createTheme();
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e)=>setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -88,17 +100,13 @@ const defaultTheme = createTheme();
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleLogin}
             >
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

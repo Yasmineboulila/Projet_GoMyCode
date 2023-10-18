@@ -6,11 +6,11 @@ const {post_router}=require('./server/routers/post_router')
 const bodyParser = require('body-parser')
 
 const app=express()
-// app.use(cors({
-//     origin:"http://localhost:3000",
-//     credentials:true,
-//     optionsSuccessStatus:200
-// }))
+app.use(cors({
+    origin:"http://localhost:3000",
+    credentials:true,
+    optionsSuccessStatus:200
+}))
 
 const connecting=require("./server/configDB/config")
 const {user_router} = require("./server/routers/user_router")

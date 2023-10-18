@@ -7,20 +7,25 @@ module.exports={
           const {email,password}=req.body
     try {
         const found=await users.findOne({email})
+        console.log('found', found)
         if (found){
             res.status(404).send({msg:"user exist"})
         }
         else {
-            const oneUser=new users(req.body)
+            const {email, password, PhoneNumber, LastName,FirstName, Role} = req.body;
             const salt=10
             const hashPassword=await bcrypt.hash(password,salt)
-            oneUser.password=hashPassword
+            const oneUser=new users({email, password:hashPassword, PhoneNumber, LastName,FirstName, Role})
+            // oneUser.password=hashPassword
+            console.log('oneUser',oneUser)
             const data={id:oneUser._id}
             const token = jwt.sign(data, "jwtSecretKey")
             await oneUser.save()
+            // console.log("result:", result)
             res.status(200).send({msg:"user created",user:oneUser,token:token})
         }
     } catch (error) {
+        console.log(error.message)
         res.status(500).send(error)
     }
 
