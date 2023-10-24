@@ -7,10 +7,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {MdPets ,MdAccountCircle} from "react-icons/md";
 import {SlBasket} from "react-icons/sl"
 import Example from './Form';
+import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+
 
  function Navbars({handleChange}) {
   const [isFormOpen, setIsFormOpen] = useState(false);
-
+  const products=useSelector((state)=>state.addItems)
   const handleImageClick = () => {
     setIsFormOpen(!isFormOpen)}
   return (
@@ -54,7 +57,11 @@ import Example from './Form';
           
           </div>
           <div>
-          <SlBasket size="1.8rem" href='/shoppingCart'/>
+            <NavLink  to={`/shoppingCart`}>
+            <SlBasket size="1.8rem"/>
+            {products.length}
+            </NavLink>
+          
           </div>
         
       </Navbar.Collapse>

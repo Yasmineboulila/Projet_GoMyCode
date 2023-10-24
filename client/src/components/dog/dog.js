@@ -11,6 +11,8 @@ export default function Dog() {
 
         const info = useSelector((state)=>state.productReducer.product)
         console.log(info)
+        const add=useSelector((state)=>state.addItems)
+  console.log(add)
   return (
     <div>
       {<ProductList2 data={info} />}

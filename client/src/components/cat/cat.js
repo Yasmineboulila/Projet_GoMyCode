@@ -4,7 +4,6 @@ import ProductList1 from './productList1'
 import { get_product } from '../../redux/actions/actions'
 
 
-
  function Cat() {
 
     const dispatch = useDispatch()
@@ -15,6 +14,7 @@ import { get_product } from '../../redux/actions/actions'
 
         const info = useSelector((state)=>state.productReducer.product)
         console.log(info)
+       
   return (
     <div>
 

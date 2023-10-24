@@ -22,6 +22,8 @@ import { get_product } from './redux/actions/actions';
 
 
 function Home({search}) {
+  const add=useSelector((state)=>state.addItems)
+  console.log(add)
   const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(get_product())
@@ -32,7 +34,7 @@ function Home({search}) {
   return (
     <>
     <div>
-    <Carousel>
+    <Carousel style={{zIndex:'-1'}}>
       <Carousel.Item>
       <img src="https://scene7.samsclub.com/is/image/samsclub/20230216-pov-dogfood-m?$med$" width="100%" />
       </Carousel.Item>

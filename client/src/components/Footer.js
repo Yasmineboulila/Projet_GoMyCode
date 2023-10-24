@@ -3,6 +3,9 @@
 import React from 'react'
 import "./FooterLinks.css"
 import {SlSocialFacebook,SlSocialTwitter,SlSocialInstagram} from "react-icons/sl"
+import {AiFillHome} from "react-icons/ai"
+import {MdEmail} from "react-icons/md"
+import{BsFillTelephoneFill}from 'react-icons/bs'
 export default function Footer() {
   return (
     
@@ -55,8 +58,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-             - Phone number:+216 92 645 362<br/>
-              - Adress: Ben Arous, Mourouj6 
+                <BsFillTelephoneFill/>+216 92 645 362<br/>
+              <AiFillHome/> Ben Arous, Mourouj6 <br/>
+              <MdEmail/>boulila.yas2002@gmail.com
               </li>
              
             </ul>

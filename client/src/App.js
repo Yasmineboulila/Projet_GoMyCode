@@ -8,12 +8,13 @@ import Home from './Home';
 import SignUp from './components/signUp';
 import Footer from './components/Footer';
 import Cat from './components/cat/cat';
-import ProductList from './components/ProductList';
+
 import ShoppingCart from './components/shoppingCart';
 import Dog from './components/dog/dog';
 import Bird from './components/bird/bird';
 import Fish from './components/fish/fish';
 import AboutUs from './components/aboutUs';
+import StripePayment from './components/stripePayment';
 
 
 function App() {
@@ -51,11 +52,12 @@ function App() {
    <Route path="/fish" element={<Fish/>}/>
    {/* <Route path="/" element={<ProductList  search={search}/>} /> */}
     <Route path='/' element={ <Home search={search}/>}/>
-    {/* <Route path='/shoppingCart' element={ <ShoppingCart/>}/> */}
+    <Route path='/shoppingCart' element={ <ShoppingCart/>}/>
     <Route path='/signUp' element={<SignUp/>}/>
     <Route path='/signIn' element={<SignIn/>}/>
     <Route path='/about' element={<AboutUs/>}/>
-    
+    <Route path='/checkout' element={<StripePayment/>}/>
+
     {/* <Route path='/shoppingCart' element={<ShoppingCart/>}/> */}
    </Routes>
    <Footer/>

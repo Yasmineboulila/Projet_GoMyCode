@@ -1,149 +1,113 @@
-// import React, { useEffect, useState } from 'react';
-// import { Button, Divider } from 'react-bootstrap';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-// import { AiOutlineDelete } from 'react-icons/ai';
-// import './shoppingCart.css'; // Import your CSS stylesheet
+import React, { useEffect, useState } from 'react';
+import { Divider } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { AiOutlineDelete } from 'react-icons/ai';
+import './shoppingCart.css'; // Import your CSS stylesheet
+import { useDispatch, useSelector } from 'react-redux';
+import { delItem } from '../redux/actions/actionCard';
 
-// function StepOneValidateOrder({ handleNext }) {
-//   const navigate = useNavigate();
-//   const [totalPrice, setTotalPrice] = useState(0);
-//   const [products, setProducts] = useState([]);
+function StepOneValidateOrder({ quantity }) {
+  const navigate = useNavigate();
+  const dispatch=useDispatch()
+  
+  
 
-//   const fetchProductsFromLocalStorage = () => {
-//     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-//     setProducts(cartItems);
-//     calculateTotalPrice(cartItems);
-//   };
+  const products=useSelector((state)=>state.addItems)
+  console.log(products)
+  
 
-//   useEffect(() => {
-//     if (products) {
-//       fetchProductsFromLocalStorage();
-//     }
-//   }, [products]);
+  useEffect(() => {
+   
+  }, [products,dispatch]);
 
-//   const handelproductorder = () => {
-//     const updatedProducts = products.map((product) => {
-//       const updatedTotalPrice = product.quantity * product.price;
-//       return {
-//         ...product,
-//         total_amount: totalPrice,
-//         total_price: updatedTotalPrice,
-//       };
-//     });
+ 
 
-//     setProducts(updatedProducts);
-//     localStorage.setItem('cart', JSON.stringify(updatedProducts));
-//     handleNext();
-//   };
+  var total=0
+  var totalPrice=0
+ 
 
-//   const handleQuantityChange = (productId, newQuantity) => {
-//     const updatedProducts = products.map((product) => {
-//       if (product.id === productId) {
-//         return { ...product, quantity: newQuantity };
-//       }
-//       return product;
-//     });
-//     setProducts(updatedProducts);
-//     calculateTotalPrice(updatedProducts);
-//     localStorage.setItem('cart', JSON.stringify(updatedProducts));
-//   };
+ 
 
-//   const calculateTotalPrice = (products) => {
-//     const totalPrice = products.reduce(
-//       (total, product) => total + product.quantity * product.price,
-//       0
-//     );
-//     setTotalPrice(totalPrice);
-//   };
+  
 
-//   const handleRemoveProduct = (productId) => {
-//     const updatedProducts = products.filter((product) => product.id !== productId);
-//     setProducts(updatedProducts);
-//     calculateTotalPrice(updatedProducts);
-//     localStorage.setItem('cart', JSON.stringify(updatedProducts));
-//   };
+  
 
-//   return (
-//     <div className="cart-container">
-//       <h1 className="cart-title">Panier</h1>
-//       <table className="cart-table">
-//         <thead>
-//           <tr>
-//             <th className="produit-column">Produit</th>
-//             <th>Nom</th>
-//             <th>Prix</th>
-//             <th>Quantité</th>
-//             <th>Subtotal</th>
-//             <th>Action</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {products.map((product) => (
-//             <tr key={product.id}>
-//               <td>
-//                 <img src={product.image} alt={product.title} className="product-image" />
-//               </td>
-//               <td>{product.title}</td>
-//               <td>
-//                 {product.price} {product.currency}
-//               </td>
-//               <td>
-//                 <Button
-//                   variant="outlined"
-//                   onClick={() =>
-//                     handleQuantityChange(
-//                       product.id,
-//                       product.quantity > 1 ? product.quantity - 1 : product.quantity
-//                     )
-//                   }
-//                 >
-//                   -
-//                 </Button>{' '}
-//                 {product.quantity}{' '}
-//                 <Button
-//                   variant="outlined"
-//                   onClick={() => handleQuantityChange(product.id, product.quantity + 1)}
-//                 >
-//                   +
-//                 </Button>
-//               </td>
-//               <td>
-//                 {product.quantity * product.prix} {product.currency}
-//               </td>
-//               <td>
-//                 <button
-//                   style={{ background: 'none', border: 'none' }}
-//                   onClick={() => handleRemoveProduct(product.id)}
-//                 >
-//                   <AiOutlineDelete style={{ fontSize: '20px', color: 'red' }} />
-//                 </button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
+  return (
+    <div className="cart-container">
+      <h1 className="cart-title">Panier</h1>
+      <table className="cart-table">
+        <thead>
+          <tr>
+            <th className="produit-column">Product</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) =>{
+            
+            
+            total = total + product.product.prix*product.quantity;
+            
+          return (
+            <tr key={product.product._id}>
+              <td>
+                <img src={product.product.image} alt={product.product.title} className="product-image" />
+              </td>
+              <td>{product.product.title}</td>
+              <td>
+                {product.product.prix} {product.product.currency}
+              </td>
+              <td>
+                {product.quantity}{' '}
+              </td>
+              <td>
+                {product.quantity * product.product.prix} 
+              </td>
+              <td>
+                <button
+                  style={{ background: 'none', border: 'none' }}
+                  onClick={() => dispatch(delItem(product.product._id))}
+                >
+                  <AiOutlineDelete style={{ fontSize: '20px', color: 'blue' }} />
+                </button>
+              </td>
+            </tr>
+          )})}
+        </tbody>
+      </table>
 
-//       <div className="cart-total">
-//         Prix Total: {totalPrice} {products[0]?.currency}
-//       </div>
+      <div className="cart-total">
+        Total Price: {total}
+      </div>
 
-//       <div className="cart-buttons">
-//         <Button
-//           className="continue-button"
-//           onClick={() => navigate('/')}
-//         >
-//           Continuez Votre Achat
-//         </Button>
-//         <Button
-//           className="confirm-button"
-//           onClick={handelproductorder}
-//         >
-//           Confirmer Votre Achat
-//         </Button>
-//       </div>
-//     </div>
-//   );
-// }
+      <div className="cart-buttons">
+      <Button 
+      variant="outline-primary"
+      onClick={() => navigate('/')}>
+        Return
+        </Button>{' '}
+      <Button 
+      variant="outline-primary"
+      onClick={() => navigate('/checkout')}>
+        Check Out
+        </Button>{' '}
+        {/* <Button
+        style={{backgroundColor:'blue'}}
+          className="continue-button"
+          onClick={() => navigate('/')}
+        >
+          Continuez Votre Achat
+        </Button> */}
+        
+      </div>
+    </div>
+  );
+}
 
-// export default StepOneValidateOrder;
+export default StepOneValidateOrder;

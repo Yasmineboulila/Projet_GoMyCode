@@ -3,6 +3,9 @@ import Card from 'react-bootstrap/Card';
 import {BsFillPatchPlusFill, BsPatchMinusFill} from 'react-icons/bs'
 import { useState  } from "react";
 import { Input } from '@mui/material';
+import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/actions/actionCard';
 
  function ProductCard({product}) {
   
@@ -14,6 +17,11 @@ import { Input } from '@mui/material';
     if(quantity>0)
     {setQuantity(quantity-1)}
     
+  }
+  const dispatch=useDispatch()
+  const addtoCard=()=>{
+    
+    dispatch(addItem(product,quantity))
   }
 
 
@@ -32,14 +40,14 @@ import { Input } from '@mui/material';
           
           
          <Input
-         value={quantity}/>
+         value={quantity} style={{marginLeft:'135px', width:'12px'}}/>
          <Card.Text style={{justifyContent:'start'}}>
          <BsFillPatchPlusFill style={{ width: '178px', height:'28px',color:'darkblue'}}
          onClick={add}/>
           <BsPatchMinusFill style={{ width: '28px', height:'28px' ,color:'darkblue' }}
            onClick={sub}/>
           </Card.Text>
-          
+          <Button style={{marginLeft:'85px'}} variant="outline-primary" onClick={addtoCard}>Add to Cart</Button>{' '}
         </Card.Body>
        
       </Card>
