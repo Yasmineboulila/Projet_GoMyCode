@@ -15,6 +15,8 @@ import Bird from './components/bird/bird';
 import Fish from './components/fish/fish';
 import AboutUs from './components/aboutUs';
 import StripePayment from './components/stripePayment';
+import Cancel from './components/cancel';
+import Success from './components/succes';
 
 
 function App() {
@@ -56,7 +58,9 @@ function App() {
     <Route path='/signUp' element={<SignUp/>}/>
     <Route path='/signIn' element={<SignIn/>}/>
     <Route path='/about' element={<AboutUs/>}/>
-    <Route path='/checkout' element={<StripePayment/>}/>
+    {/* <Route path='/checkout' element={<StripePayment/>}/> */}
+    <Route path="/success" element={<Success/>} /> 
+    <Route path="/cancel" element={<Cancel/>} /> 
 
     {/* <Route path='/shoppingCart' element={<ShoppingCart/>}/> */}
    </Routes>

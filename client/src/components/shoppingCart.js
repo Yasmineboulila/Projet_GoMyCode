@@ -11,11 +11,28 @@ import { delItem } from '../redux/actions/actionCard';
 function StepOneValidateOrder({ quantity }) {
   const navigate = useNavigate();
   const dispatch=useDispatch()
-  
-  
 
   const products=useSelector((state)=>state.addItems)
   console.log(products)
+  const checkout=()=>{
+    try {
+       axios.
+     post(`http://localhost:5679/create-checkout-session`,{products}).then((res)=>{
+      console.log(res)
+      if(res.data.url){
+        window.location.href=res.data.url
+      }
+    })
+    } catch (error) {
+      console.log(error)
+    }
+     
+   
+  }
+  
+  
+
+ 
   
 
   useEffect(() => {
@@ -94,7 +111,7 @@ function StepOneValidateOrder({ quantity }) {
         </Button>{' '}
       <Button 
       variant="outline-primary"
-      onClick={() => navigate('/checkout')}>
+      onClick={checkout}>
         Check Out
         </Button>{' '}
         {/* <Button

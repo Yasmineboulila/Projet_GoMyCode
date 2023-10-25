@@ -1,22 +1,24 @@
-
+const express=require("express")
 const Stripe = require ('stripe');
-const stripe = Stripe('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')
+const stripe = Stripe('sk_test_51O4jGZJzqOOqYxvc3CGDnY56ifzMZZvwF7fTqAjg0pSmqh9okiftzQwJVdmYwCUibFWHORfHia9c8aKlHsqxslrs00Oa3WoL82')
 
-const router= require('express').Router()
+const paiement_router=express.Router()
 
-router.post('/create-checkout-session', async(req,res)=>{
-    const line_items=req.body.state.map(item=>{
+paiement_router.post('/create-checkout-session', async(req,res)=>{
+    console.log(req.body)
+    const line_items=req.body.products.map(item=>{
         return {
                 price_data: {
                     currency: 'usd',
                     product_data: {
                         name: item.product.title,
                         description: item.product.description,
+                        images:[item.product.image],
                         metadata:{
-                            id:item.product._id
+                            id:item.product._id,
                         }
                     },
-                    unit_amount: item.product.prix*100,
+                    unit_amount: item.product.prix*100, 
                 },
                 quantity: item.quantity,
             }
@@ -30,6 +32,4 @@ router.post('/create-checkout-session', async(req,res)=>{
     });
     res.send({url:session.url });
 })
-module.exports= {
-    paiement_router:router
-}
+module.exports= paiement_router
