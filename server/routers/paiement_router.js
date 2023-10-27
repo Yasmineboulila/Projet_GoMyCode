@@ -12,13 +12,13 @@ paiement_router.post('/create-checkout-session', async(req,res)=>{
                     currency: 'usd',
                     product_data: {
                         name: item.product.title,
-                        description: item.product.description,
+                        
                         images:[item.product.image],
                         metadata:{
                             id:item.product._id,
                         }
                     },
-                    unit_amount: item.product.prix*100, 
+                    unit_amount:Math.floor(item.product.prix*100), 
                 },
                 quantity: item.quantity,
             }

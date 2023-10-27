@@ -9,7 +9,7 @@ module.exports={
         const found=await users.findOne({email})
         console.log('found', found)
         if (found){
-            res.status(404).send({msg:"user exist"})
+            res.status(404).send({errors:[{msg:"user exist"}]})
         }
         else {
             const {email, password, PhoneNumber, LastName,FirstName, Role} = req.body;
@@ -35,12 +35,12 @@ module.exports={
         try {
             const check=await users.findOne({email})
             if(!check){
-                res.status(404).send({msg:"user doesn't exist"})
+                res.status(404).send({errors:[{msg:"user doesn't exist"}]})
             }
             else {
                 const compare=bcrypt.compareSync(password,check.password)
                 if(!compare){
-                    res.status(404).send({msg:"password wrong"})
+                    res.status(404).send({errors:[{msg:"password wrong"}]})
                 }
                 else{
                     const payload={id:check._id}

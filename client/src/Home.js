@@ -76,9 +76,9 @@ function Home({search}) {
 </Row>
 </Container>
     </div>
-    <div>
+    <div style={{display:"flex",justifyContent:"space-around",flexWrap:'wrap'}}>
     {info.filter(e=>e.title.toUpperCase().includes((search.toUpperCase()))).map(e=>
-       <Card style={{ width: '20rem' }}>
+       <Card style={{ width: '20rem',marginTop:"10px",zIndex:'-1' }}>
        <Card.Img variant="top" src={e.image} />
        <Card.Body>
          <Card.Title>{e.title}</Card.Title>

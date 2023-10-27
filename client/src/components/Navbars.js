@@ -1,4 +1,4 @@
-import React ,{ useState }  from 'react'
+import React ,{ useEffect, useState }  from 'react'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -7,12 +7,27 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {MdPets ,MdAccountCircle} from "react-icons/md";
 import {SlBasket} from "react-icons/sl"
 import Example from './Form';
-import { NavLink } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {RiAdminFill} from 'react-icons/ri'
+import { getCurrent, logout } from '../redux/actions/actions';
+import {BsGearWideConnected} from "react-icons/bs"
 
 
  function Navbars({handleChange}) {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const dispatch=useDispatch()
+  useEffect(()=>{
+dispatch(getCurrent())
+  },[])
+  const navigate = useNavigate()
+  const handleLogout=()=>{
+    dispatch(logout(navigate))
+  }
+ 
+  
+  const user=useSelector(state=>state.userReducer.user)
+  console.log(user)
   const products=useSelector((state)=>state.addItems)
   const handleImageClick = () => {
     setIsFormOpen(!isFormOpen)}
@@ -53,13 +68,28 @@ import { useSelector } from 'react-redux';
           />
         </Form>
         <div>
-        <MdAccountCircle size="1.8rem" onClick={handleImageClick}/>
+          {user.email?
+          <NavLink >
+          <BsGearWideConnected size="1.6rem" style={{color:'black'}} onClick={handleLogout} />
+          </NavLink>:null}
+        </div>
+        <div> 
+          {user.Role==="admin" ? <NavLink  to={`/admin`}>
+          <RiAdminFill size="1.6rem" style={{color:'black'}} />
+          </NavLink>:null}
+         
+        </div>
+        <div>
+        <MdAccountCircle size="1.8rem" onClick={handleImageClick} style={{color:'black'}}/>
           
           </div>
           <div>
             <NavLink  to={`/shoppingCart`}>
-            <SlBasket size="1.8rem"/>
+            <SlBasket size="1.8rem" style={{color:"black"}}/>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"14px",width:"14px",borderRadius:"50%",fontWeight:"70D",backgroundColor:"blue",color:"white",fontSize:"14px",marginLeft:"5px",position:"absolute",top:"5px",right:"5px",backgroundColor:'black'}}>
             {products.length}
+            </div>
+            
             </NavLink>
           
           </div>

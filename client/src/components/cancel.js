@@ -1,18 +1,21 @@
 import React from "react";
- 
+import Swal from 'sweetalert2'
 function Cancel() { 
   return ( 
-    <> 
-      <h4>Oops! Your payment has been cancelled.</h4> 
-      <p> 
-        We appreciate your business! If you have any questions, please email us 
-        at 
-        <a href="mailto:orders@example.com">boulila.yb@gmail.com</a>. 
-      </p> 
-      <div> 
-        <button> Go to Home page</button> 
-      </div> 
-    </> 
+    
+          <>
+          {
+             Swal.fire({
+             position: 'center',
+             icon: 'error',
+             title: 'Oops! ',
+             text: "Your payment has been cancelled",
+             showConfirmButton: true,
+             confirmButtonText: '<a href="/" style="color:white">Go to Home page <a/>',
+             timer: 100000
+           })
+         }
+     </>
   ); 
 } 
  

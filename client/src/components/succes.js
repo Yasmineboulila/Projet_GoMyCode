@@ -1,17 +1,21 @@
 import React from "react";
+import Swal from 'sweetalert2'
 function Success() { 
     return ( 
-      <> 
-        <h2>Thanks for your order!</h2> 
-        <h4>Your payment is successful.</h4> 
-        <p> 
-          We appreciate your business! If you have any questions, please email us 
-          at 
-          <a href=" mailto:orders@example.com"> boulila.yb@gmail.com</a>. 
-        </p> 
-        <div> 
-        </div> 
-      </> 
+        <>
+     {
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Thanks for your order! ',
+        text: "Your payment is successful",
+        showConfirmButton: true,
+        confirmButtonText: '<a href="/" style="color:white">Go to Home page <a>',
+        timer: 100000
+      })
+    }
+</>
+
     ); 
   } 
    

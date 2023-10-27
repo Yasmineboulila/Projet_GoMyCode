@@ -26,8 +26,8 @@ import { addItem } from '../redux/actions/actionCard';
 
 
   return (
-    <div>
-      <Card  style={{ width: '20rem' }}>
+    <div style={{display:"flex",justifyContent:"space-around",flexWrap:'wrap'}}>
+      <Card  style={{ width: '20rem' ,marginTop:'10px'}}>
         <Card.Img variant="top" src={product.image} />
         <Card.Body>
           <Card.Title> {product.title}</Card.Title>
@@ -37,8 +37,6 @@ import { addItem } from '../redux/actions/actionCard';
            <Card.Text>
            {product.prix}<span> TND </span>
           </Card.Text>
-          
-          
          <Input
          value={quantity} style={{marginLeft:'135px', width:'12px'}}/>
          <Card.Text style={{justifyContent:'start'}}>

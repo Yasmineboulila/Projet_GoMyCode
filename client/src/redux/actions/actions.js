@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from 'sweetalert2';
-import { GET_PRODUCT,LOG_IN,REGISTER ,GET_CURRENT, FAIL} from "../actions/actionsType";
+import { GET_PRODUCT,LOG_IN,REGISTER ,GET_CURRENT, FAIL, LOG_OUT} from "../actions/actionsType";
+import { alert_error } from "./actionError";
 export const get_product=()=>async(dispatch)=>{
     try {
         await axios.get(`http://localhost:5679/api/getPost`).then((res)=>{
@@ -76,10 +77,10 @@ export const login =(data,navigate)=>async(dispatch)=>{
         navigate("/")
     } catch (error) {
         console.log(error)
-        // error.response.data.errors.forEach((el) => {
-        //     dispatch(alert_error(el.msg));
-        //   });
-        //   dispatch({ type: FAIL, payload: error.response.data });
+        error.response.data.errors.forEach((el) => {
+            dispatch(alert_error(el.msg));
+          });
+          dispatch({ type: FAIL, payload: error.response.data });
         }
     }
 
@@ -94,10 +95,10 @@ export const register =(data,navigate)=>async(dispatch)=>{
         navigate('/')
     } catch (error) {
         console.log(error)
-        // error.response.data.errors.forEach((el) => {
-        //     dispatch(alert_error(el.msg));
-        //   });
-        //   dispatch({ type: FAIL, payload: error.response.data });
+        error.response.data.errors.forEach((el) => {
+            dispatch(alert_error(el.msg));
+          });
+          dispatch({ type: FAIL, payload: error.response.data });
         }
 }
 export const getCurrent= ()=>async(dispatch)=>{
@@ -116,3 +117,8 @@ export const getCurrent= ()=>async(dispatch)=>{
          console.log(error)
      }
  }
+ export const logout=(navigate)=>{
+    navigate('/')
+    return ({type:LOG_OUT})
+    
+}

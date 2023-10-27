@@ -1,5 +1,8 @@
 export const GET_PRODUCT="GET_PRODUCT"
 export const LOG_IN="LOG_IN"
+export const LOG_OUT="LOG_OUT"
 export const REGISTER="REGISTER"
 export const GET_CURRENT="GET_CURRENT"
 export const FAIL="FAIL"
+export const CLEAR_ERROR="CLEAR_ERROR"
+export const ALERT_ERROR="ALERT"

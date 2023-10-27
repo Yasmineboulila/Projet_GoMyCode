@@ -14,9 +14,10 @@ import Dog from './components/dog/dog';
 import Bird from './components/bird/bird';
 import Fish from './components/fish/fish';
 import AboutUs from './components/aboutUs';
-import StripePayment from './components/stripePayment';
 import Cancel from './components/cancel';
 import Success from './components/succes';
+import Admin from './components/admin/Admin';
+import AlertError from './components/Alert';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
   return (
     <>
     <Navbars handleChange={handleChange}/>
+    <AlertError/>
    <Routes>
    <Route path="/cat" element={<Cat/>}/>
    <Route path="/dog" element={<Dog/>}/>
@@ -60,6 +62,7 @@ function App() {
     <Route path='/about' element={<AboutUs/>}/>
     {/* <Route path='/checkout' element={<StripePayment/>}/> */}
     <Route path="/success" element={<Success/>} /> 
+    <Route path='/admin' element={<Admin />} />
     <Route path="/cancel" element={<Cancel/>} /> 
 
     {/* <Route path='/shoppingCart' element={<ShoppingCart/>}/> */}
